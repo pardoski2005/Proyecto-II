@@ -3,17 +3,30 @@ interface LoginResponse {
   rol: string;
 }
 
+const API_URL = 'http://localhost:3001/api/auth/login';
+
 export async function login(email: string, password: string): Promise<LoginResponse> {
-  const response = await fetch('http://localhost:3000/api/auth/login', {
+  const response = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ correo: email, password }),
   });
 
+  const text = await response.text(); // 👈 obtenemos el texto sin asumir que es JSON
+  console.log('Respuesta cruda del backend:', text); // 👈 debug
+
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Error al iniciar sesión');
+    try {
+      const error = JSON.parse(text); // intenta convertir el texto en JSON
+      throw new Error(error.error || 'Error al iniciar sesión');
+    } catch {
+      throw new Error('Error desconocido');
+    }
   }
 
-  return response.json();
+  try {
+    return JSON.parse(text); // solo si el backend realmente devolvió JSON válido
+  } catch {
+    throw new Error('Respuesta inválida del servidor');
+  }
 }
