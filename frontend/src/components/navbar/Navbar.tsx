@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav style={{ padding: '1rem', background: '#f2f2f2' }}>
-      <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
-      <Link to="/dashboard">Dashboard</Link>
+    <nav className="flex items-center p-4 bg-gray-100">
+      <Link to="/login" className="mr-4 text-black-600 hover:text-violet-800 hover:underline">
+        Login
+      </Link>
+      <Link to="/dashboard" className="text-black-600 hover:text-violet-800 hover:underline">
+        Dashboard
+      </Link>
     </nav>
   );
 };

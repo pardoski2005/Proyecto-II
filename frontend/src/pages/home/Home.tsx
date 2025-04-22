@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import React from 'react';
 
 import Navbar from '../../components/navbar/Navbar.tsx';
+import Footer from '../../components/footer/Footer.tsx';
 
 export default function HomePage() {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function HomePage() {
         <h1 >Bienvenido</h1>
         <p className='text-center'>La base de datos se crea automáticamente al cargar esta página.</p>
       </main>
+      <Footer />
     </>
   );
 }
