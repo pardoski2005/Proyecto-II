@@ -1,7 +1,7 @@
 import { db } from '@/app/lib/db';
 import { z } from 'zod';
 
-//buenas noches 
+//buenas noches ..
 
 // ✅ Schema de validación con zod
 export const clienteSchema = z.object({
