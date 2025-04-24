@@ -4,6 +4,7 @@ interface LoginResponse {
 }
 
 const API_URL = 'http://localhost:3001/api/auth/login';
+//const API_URL = '/api/auth/login'; // usa ruta relativa en vez de puerto
 
 export async function login(email: string, password: string): Promise<LoginResponse> {
   const response = await fetch(API_URL, {
